@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¿Me perdonas?</title>
+<style>
+    body, html {
+        height: 100%;
+        margin: 0;
+        overflow: hidden; /* Para evitar que el video se desplace fuera de la pantalla */
+    }
+
+    #video-background {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -1;
+    }
+
+    #content {
+        text-align: center;
+        z-index: 1; /* Asegúrate de que el contenido esté por encima del video */
+        background-image: url('IMG-20230925-WA0008.jpg'); /* Agregar imagen como fondo */
+        background-size: cover; /* Ajustar tamaño de la imagen */
+        background-position: center; /* Posicionar la imagen en el centro */
+        padding: 20px; /* Añadir un espacio interno para el contenido */
+        border: 5px solid white; /* Borde blanco */
+        border-radius: 20px; /* Bordes redondeados */
+        width: 70%; /* Ancho fijo del recuadro */
+        max-width: 800px; /* Ancho máximo del recuadro */
+        margin: auto; /* Centrar el recuadro horizontalmente */
+    }
+
+    h1 {
+        color: white; /* Color blanco */
+        text-decoration: none; /* Sin subrayado */
+    }
+
+    #noButton {
+        position: absolute;
+        transition: transform 0.3s ease;
+    }
+
+    #fullscreenImage {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+    }
+</style>
+</head>
+<body>
+
+<video autoplay loop muted id="video-background">
+  <source src="fondo.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+<div id="content">
+    <h1>★゜+。*:゜+。*:゜+。*:゜+。*:゜+。*:゜。+*:゜+。*:゜+。*:゜+。*:☆<br>★·.·¯`·.·★ ¿ me perdonas ? ★·.·¯`·.·★<br>★゜+。*:゜+。*:゜+。*:゜+。*:゜+。*:゜。+*:゜+。*:゜+。*:゜+。*:☆</h1>
+    <div style="margin-top: 20px;">
+        <button id="yesButton" style="background-color: green; color: white; padding: 10px 20px; border: none; cursor: pointer;">Si</button>
+        <button id="noButton" style="background-color: red; color: white; padding: 10px 20px; border: none; cursor: pointer;">No</button>
+    </div>
+</div>
+
+<img id="fullscreenImage" src="IMG-20240214-WA0012.jpg" alt="Fullscreen Image">
+
+<script>
+var greenButton = document.getElementById("yesButton");
+var originalSize = parseFloat(window.getComputedStyle(greenButton).getPropertyValue('font-size'));
+
+greenButton.addEventListener("click", function() {
+    var fullscreenImage = document.getElementById("fullscreenImage");
+    fullscreenImage.style.display = "block";
+    alert("Se que esto no es nada, también sé que pensarás que es una tontería pero...");
+    // Mostrar la segunda alerta después de que se acepte la primera
+    setTimeout(function() {
+        alert("Me gusta verte feliz. Es más que obvio que todo esto es insignificante, pero espero por lo menos alegrado un poco, espero que esto te parezca lindo, y por supuesto que quiero tener detalles bonitos contigo");
+        // Mostrar la tercera alerta después de que se acepte la segunda
+        setTimeout(function() {
+            alert("Fuiste lo más lindo que yo alguna vez llegué a tener, no me gusta para nada verte triste, por más que no creas eso. Linda claro que te voy a extrañar, y sé que estás cansada de sentirte mal, entiendo por qué no quieres nada conmigo (pues yo te he dado muchas razones), deseo que te vaya muy bien y que cumplas todo lo que quieres en la vida");
+            // Mostrar la cuarta alerta después de que se acepte la tercera
+            setTimeout(function() {
+                alert("Le ruego a Dios para que algún día yo vuelva a tener una oportunidad tan valiosa como la es poder estar contigo");
+                // Mostrar la quinta alerta después de que se acepte la cuarta
+                setTimeout(function() {
+                    var response = confirm("Erikita, ahora, si le das click en rechazar supondré que hasta aquí llego todo. Pero si le das a aceptar, consideraré que por lo menos podríamos seguir hablando.");
+                    if (response) {
+                        alert("gracias linda, porfa dale aceptar");
+                        window.location.href = "https://youtu.be/rkefq5kot_w";
+                    } else {
+                        alert("Entiendo bien por qué tomaste esta decisión, te seguiré guardando un gran espacio en mi corazón. Espero me escribas alguito antes de cerrar esto y dejar las cosas hasta el día de hoy. (Igual de todas formas no tengo manera de saber qué opción elegiste, así que perfectamente puedes reiniciar la página y aceptar para ver lo que había en la otra opción, lo comento por si te interesa chismosear, que eso ni lo dudo porque te conozco niña linda)");
+                    }
+                }, 100);
+            }, 100);
+        }, 100);
+    }, 100);
+});
+
+document.getElementById("noButton").addEventListener("mouseover", function() {
+    var button = document.getElementById("noButton");
+    var newPositionX = Math.random() * (window.innerWidth - button.offsetWidth);
+    var newPositionY = Math.random() * (window.innerHeight - button.offsetHeight);
+    button.style.left = newPositionX + "px";
+    button.style.top = newPositionY + "px";
+    button.style.transform = "scale(0.99)";
+
+    // Aumentar el tamaño del botón verde
+    var currentSize = parseFloat(window.getComputedStyle(greenButton).getPropertyValue('font-size'));
+    var newSize = currentSize * 1.1; // Aumento en un 10% del tamaño actual
+    greenButton.style.fontSize = newSize + 'px';
+    
+    // Mantener el tamaño del botón verde después de crecer
+    greenButton.setAttribute("data-original-size", newSize);
+
+    // Agregar imagen "Can't see.jpeg" temporalmente
+    var img = document.createElement("img");
+    img.src = "Can't see.jpeg";
+    img.style.position = "fixed";
+    img.style.top = "50%";
+    img.style.left = "50%";
+    img.style.transform = "translate(-50%, -50%)";
+    document.body.appendChild(img);
+
+    // Eliminar la imagen después de 200 milisegundos (0.2 segundos)
+    setTimeout(function() {
+        img.remove();
+    }, 200);
+});
+
+// Mantener el tamaño del botón verde después de crecer
+greenButton.addEventListener("mouseout", function() {
+    var originalSize = greenButton.getAttribute("data-original-size");
+    greenButton.style.fontSize = originalSize + 'px';
+});
+</script>
+
+</body>
+</html>
